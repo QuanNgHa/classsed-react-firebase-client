@@ -10,21 +10,22 @@ export class home extends Component {
     }
 
     componentDidMount() {
-        axios.get('/screams')
-            .then(res => {
+        axios
+            .get('/screams')
+            .then((res) => {
                 console.log(res.data)
                 this.setState({
                     screams: res.data
                 })
             })
-            .catch(err => console.log(err));
+            .catch((err) => console.log(err));
     }
 
     render() {
         //If this.state.screams? means if screams in State is not Null
         let recentScreamsMarkup = this.state.screams ? (
-            this.state.screams.map(scream => <Scream scream={scream} />)
-        ) : <p>Loading...</p>
+            this.state.screams.map((scream, i) => <Scream scream={scream} />)
+        ) : (<p>Loading...</p>);
         return (
             <Grid container spacing={2}>
                 <Grid item sm={8} xs={12}>
