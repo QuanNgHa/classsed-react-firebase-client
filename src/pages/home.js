@@ -13,7 +13,7 @@ export class home extends Component {
         axios
             .get('/screams')
             .then((res) => {
-                console.log(res.data)
+                //console.log(res.data)
                 this.setState({
                     screams: res.data
                 })
@@ -24,7 +24,7 @@ export class home extends Component {
     render() {
         //If this.state.screams? means if screams in State is not Null
         let recentScreamsMarkup = this.state.screams ? (
-            this.state.screams.map((scream, i) => <Scream scream={scream} />)
+            this.state.screams.map((scream, i) => <Scream key={scream.screamId} scream={scream} />)
         ) : (<p>Loading...</p>);
         return (
             <Grid container spacing={2}>
