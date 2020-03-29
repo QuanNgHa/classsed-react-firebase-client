@@ -12,7 +12,7 @@ export default function (state = initialState, action) {
     switch (action.type) {
         case SET_AUTHENTICATED:
             return {
-                ...state, //spread the state we already have
+                ...state,
                 authenticated: true
             };
         case SET_UNAUTHENTICATED:
