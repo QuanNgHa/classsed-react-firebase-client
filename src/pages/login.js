@@ -78,7 +78,7 @@ export class login extends Component {
                                 {errors.general}
                             </Typography>
                         )}
-                        <Button type="Submit" variant="contained" color="primary" className={classes.button} disabled={loading}>
+                        <Button type="submit" variant="contained" color="primary" className={classes.button} disabled={loading}>
                             Login {loading && <CircularProgress size={30} className={classes.progress} />}
                         </Button>
                         <br />
