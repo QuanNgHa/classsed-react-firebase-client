@@ -7,9 +7,9 @@ import { connect } from 'react-redux';
 import { editUserDetails } from '../redux/actions/userActions';
 
 // MUI Stuff
-import Tooltip from '@material-ui/core/Tooltip';
+
 import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
+
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
