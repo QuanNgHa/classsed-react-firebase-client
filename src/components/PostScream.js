@@ -4,14 +4,13 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import MyButton from '../util/MyButton';
 //Redux stuff
 import { connect } from 'react-redux';
-import { postScream } from '../redux/actions/dataActions';
+import { postScream, clearErrors } from '../redux/actions/dataActions';
 
 // MUI Stuff
 
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
-
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import CircularProgress from '@material-ui/core/CircularProgress';
@@ -56,7 +55,8 @@ class PostScream extends Component {
         this.setState({ open: true })
     }
     handleClose = () => {
-        this.setState({ open: false, errors: {} })
+        this.props.clearErrors(); //Clear the Error in Redux Store when we close the Dialog
+        this.setState({ open: false, errors: {} }) //Cleear the error in the component state
     }
     handleChange = (event) => {
         this.setState({ [event.target.name]: event.target.value });
@@ -120,10 +120,12 @@ class PostScream extends Component {
 
 PostScream.propTypes = {
     postScream: PropTypes.func.isRequired,
+    clearErrors: PropTypes.func.isRequired,
     UI: PropTypes.object.isRequired
+
 }
 const mapStateToProps = (state) => ({
     UI: state.UI
 })
 
-export default connect(mapStateToProps, { postScream })(withStyles(styles)(PostScream))
+export default connect(mapStateToProps, { postScream, clearErrors })(withStyles(styles)(PostScream))
