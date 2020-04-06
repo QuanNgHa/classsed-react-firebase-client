@@ -29,6 +29,10 @@ export default function (state = initialState, action) {
             //Find the index of the scream where the scream Id == screamId take from action.payload
             let index = state.screams.findIndex((scream) => scream.screamId === action.payload.screamId);
             state.screams[index] = action.payload;
+            //Need to check when we like a scream that in a singular scream state => we also need to update
+            if (state.scream.screamId === action.payload.screamId) {
+                state.scream = action.payload;
+            }
             return {
                 ...state
             }
