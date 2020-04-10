@@ -1,4 +1,4 @@
-import { SET_SCREAMS, LIKE_SCREAM, UNLIKE_SCREAM, LOADING_DATA, DELETE_SCREAM, POST_SCREAM, SET_SCREAM } from '../types';
+import { SET_SCREAMS, LIKE_SCREAM, UNLIKE_SCREAM, LOADING_DATA, DELETE_SCREAM, POST_SCREAM, SET_SCREAM, SUBMIT_COMMENT } from '../types';
 
 const initialState = {
     screams: [], //Array holdings all screams
@@ -31,7 +31,9 @@ export default function (state = initialState, action) {
             state.screams[index] = action.payload;
             //Need to check when we like a scream that in a singular scream state => we also need to update
             if (state.scream.screamId === action.payload.screamId) {
-                state.scream = action.payload;
+                let temp = state.scream.comments;
+                state.scream = action.payload; //action.payload dont have the comments array, so need to save and update
+                state.scream.comments = temp
             }
             return {
                 ...state
@@ -49,6 +51,15 @@ export default function (state = initialState, action) {
                     ...state.screams //The current screams
                 ]
             }
+        case SUBMIT_COMMENT:
+            return {
+                ...state,
+                scream: {
+                    ...state.scream,
+                    comments: [action.payload, ...state.scream.comments]
+                }
+            };
+
         default:
             return state;
     }

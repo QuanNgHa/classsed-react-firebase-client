@@ -30,7 +30,7 @@ if (token) {
   const decodedToken = jwtDecode(token);
   console.log(decodedToken);
   if (decodedToken.exp * 1000 < Date.now()) {
-    store.dispatch(logoutUser);
+    store.dispatch(logoutUser());
     window.location.href = '/login';
 
   } else {
