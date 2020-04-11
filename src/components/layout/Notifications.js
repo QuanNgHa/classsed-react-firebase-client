@@ -42,9 +42,10 @@ class Notifications extends Component {
 
         let notificationsIcon;
         if (notifications && notifications.length > 0) {
-            notifications.filter((not) => not.read === false).length > 0
+            notifications.filter((not) => not.read === false).length > 0 //Unread Notification
                 ? (notificationsIcon = (
                     <Badge
+                        //How many Notification unread
                         badgeContent={
                             notifications.filter((not) => not.read === false).length
                         }

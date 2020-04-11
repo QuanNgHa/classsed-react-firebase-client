@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 import Scream from '../components/scream/Scream';
 import Profile from '../components/profile/Profile';
+import ScreamSkeleton from '../util/ScreamSkeleton';
 
 
 //Redux
@@ -21,7 +22,7 @@ export class home extends Component {
         //If this.state.screams? means if screams in State is not Null
         let recentScreamsMarkup = !loading ? (
             screams.map((scream, i) => <Scream key={scream.screamId} scream={scream} />)
-        ) : (<p>Loading...</p>);
+        ) : (<ScreamSkeleton />);
         return (
             <Grid container spacing={2}>
                 <Grid item sm={8} xs={12}>
